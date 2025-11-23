@@ -1,13 +1,12 @@
-# United Youth Developers (UYD) FastAPI Backend
+# United Youth Developers (UYD) Full-Stack Server
 
-This is the FastAPI backend for the United Youth Developers website, providing REST API endpoints for programs, events, news, and site statistics.
+This is the complete FastAPI server for the United Youth Developers website, providing both the website frontend (HTML templates) and REST API backend on the same port.
 
 ## Features
 
-- **Programs Management**: CRUD operations for youth development programs
-- **Events Management**: Event creation, retrieval, and management
-- **News Articles**: Article management system
-- **Site Statistics**: Dynamic site stats for the frontend
+- **Website Frontend**: HTML templates served via Jinja2
+- **REST API**: CRUD operations for programs, events, news, and site statistics
+- **Static Files**: CSS, JS, and images served automatically
 - **SQLite Database**: Lightweight database for development and small-scale deployment
 - **CORS Support**: Configured for frontend integration
 
@@ -25,14 +24,30 @@ This is the FastAPI backend for the United Youth Developers website, providing R
 
 3. **Run the Server**:
    ```bash
-   python main.py
+   # Easy startup
+   python run.py
+
+   # Or directly with uvicorn
+   uvicorn main:app --host 0.0.0.0 --port 8000 --reload
    ```
 
-The API will be available at `http://127.0.0.1:8000`
+The website and API will be available at `http://localhost:8000`
 
-## API Endpoints
+## Available Routes
 
-### Programs
+### Website Pages
+- `GET /` - Home page
+- `GET /about` - About Us page
+- `GET /programs` - Programs page
+- `GET /events` - Events page
+- `GET /contact` - Contact page
+- `GET /get-involved` - Get Involved page
+- `GET /news` - News page
+- And more...
+
+### API Endpoints
+
+#### Programs
 - `GET /api/programs/` - List all programs
 - `GET /api/programs/featured/` - Get featured programs
 - `GET /api/programs/{id}` - Get specific program
@@ -40,7 +55,7 @@ The API will be available at `http://127.0.0.1:8000`
 - `PUT /api/programs/{id}` - Update program
 - `DELETE /api/programs/{id}` - Delete program
 
-### Events
+#### Events
 - `GET /api/events/` - List all events
 - `GET /api/events/upcoming/` - Get upcoming events
 - `GET /api/events/{id}` - Get specific event
@@ -48,15 +63,19 @@ The API will be available at `http://127.0.0.1:8000`
 - `PUT /api/events/{id}` - Update event
 - `DELETE /api/events/{id}` - Delete event
 
-### News
+#### News
 - `GET /api/news/` - List all articles
 - `GET /api/news/latest/` - Get latest news
 - `GET /api/news/featured/` - Get featured articles
 - `GET /api/news/{id}` - Get specific article
 - `POST /api/news/` - Create new article
 
-### Site Stats
+#### Site Stats
 - `GET /api/core/stats/` - Get site statistics
+
+## API Documentation
+
+Visit `http://localhost:8000/docs` for interactive API documentation with Swagger UI.
 
 ## Database Schema
 
@@ -75,5 +94,3 @@ For production deployment, consider:
 - Implementing proper logging
 - Adding rate limiting
 - Setting up proper CORS configuration
-
-

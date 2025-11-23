@@ -3,8 +3,10 @@ FastAPI Backend for United Youth Developers (UYD)
 Provides REST API for programs, events, and other content management
 """
 
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI, HTTPException, Depends, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 from sqlalchemy import create_engine, Column, Integer, String, Text, DateTime, Boolean, Float, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session, relationship
@@ -154,6 +156,12 @@ app = FastAPI(
     description="Backend API for UYD website content management",
     version="1.0.0"
 )
+
+# Mount static files
+app.mount("/assets", StaticFiles(directory="assets"), name="assets")
+
+# Template setup
+templates = Jinja2Templates(directory="templates")
 
 # CORS middleware
 app.add_middleware(
@@ -379,6 +387,71 @@ async def get_site_stats(db: Session = Depends(get_db)):
             "subscribers": subscribers_count
         }
     }
+
+# Template Routes - Serve HTML pages
+@app.get("/")
+async def home(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
+
+@app.get("/about")
+@app.get("/about.html")
+async def about(request: Request):
+    return templates.TemplateResponse("about.html", {"request": request})
+
+@app.get("/programs")
+@app.get("/programs.html")
+async def programs(request: Request):
+    return templates.TemplateResponse("programs.html", {"request": request})
+
+@app.get("/events")
+@app.get("/events.html")
+async def events(request: Request):
+    return templates.TemplateResponse("events.html", {"request": request})
+
+@app.get("/contact")
+@app.get("/contact.html")
+async def contact(request: Request):
+    return templates.TemplateResponse("contact.html", {"request": request})
+
+@app.get("/get-involved")
+@app.get("/get-involved.html")
+async def get_involved(request: Request):
+    return templates.TemplateResponse("get-involved.html", {"request": request})
+
+@app.get("/news")
+@app.get("/news.html")
+async def news(request: Request):
+    return templates.TemplateResponse("news.html", {"request": request})
+
+@app.get("/event-details")
+@app.get("/event-details.html")
+async def event_details(request: Request):
+    return templates.TemplateResponse("event-details.html", {"request": request})
+
+@app.get("/news-details")
+@app.get("/news-details.html")
+async def news_details(request: Request):
+    return templates.TemplateResponse("news-details.html", {"request": request})
+
+@app.get("/students-life")
+@app.get("/students-life.html")
+async def students_life(request: Request):
+    return templates.TemplateResponse("students-life.html", {"request": request})
+
+@app.get("/privacy")
+@app.get("/privacy.html")
+async def privacy(request: Request):
+    return templates.TemplateResponse("privacy.html", {"request": request})
+
+@app.get("/terms-of-service")
+@app.get("/terms-of-service.html")
+async def terms_of_service(request: Request):
+    return templates.TemplateResponse("terms-of-service.html", {"request": request})
+
+@app.get("/404")
+@app.get("/404.html")
+async def not_found(request: Request):
+    return templates.TemplateResponse("404.html", {"request": request})
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""
-UYD Website & API Server Startup
+"""UYD Website & API Server Startup
 Runs both the website and API on the same port
 """
 
+import os
 import subprocess
 import sys
-import os
 from pathlib import Path
+
 
 def run_server():
     """Run the FastAPI server with templates and static files"""
@@ -23,12 +23,17 @@ def run_server():
     try:
         # Run uvicorn with auto-reload
         cmd = [
-            sys.executable, "-m", "uvicorn",
+            sys.executable,
+            "-m",
+            "uvicorn",
             "main:app",
-            "--host", "0.0.0.0",
-            "--port", "8000",
+            "--host",
+            "0.0.0.0",
+            "--port",
+            "8000",
             "--reload",
-            "--log-level", "info"
+            "--log-level",
+            "info",
         ]
 
         subprocess.run(cmd, check=True)
@@ -38,6 +43,7 @@ def run_server():
     except subprocess.CalledProcessError as e:
         print(f"Error starting server: {e}")
         sys.exit(1)
+
 
 if __name__ == "__main__":
     run_server()

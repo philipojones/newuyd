@@ -5,6 +5,7 @@ Seed script to populate UYD database with sample programs and events
 from datetime import datetime, timedelta
 from main import SessionLocal, Program, Event, NewsArticle
 
+
 def seed_programs(db):
     """Seed the database with sample programs"""
     programs_data = [
@@ -26,7 +27,7 @@ def seed_programs(db):
             """,
             "featured_image": "/assets/img/education/education-1.webp",
             "is_featured": True,
-            "is_active": True
+            "is_active": True,
         },
         {
             "title": "Agribusiness & Sustainable Farming",
@@ -46,7 +47,7 @@ def seed_programs(db):
             """,
             "featured_image": "/assets/img/education/agribusiness-1.webp",
             "is_featured": True,
-            "is_active": True
+            "is_active": True,
         },
         {
             "title": "Youth Leadership Development",
@@ -66,7 +67,7 @@ def seed_programs(db):
             """,
             "featured_image": "/assets/img/education/leadership-1.webp",
             "is_featured": True,
-            "is_active": True
+            "is_active": True,
         },
         {
             "title": "Environmental Conservation & Climate Action",
@@ -86,7 +87,7 @@ def seed_programs(db):
             """,
             "featured_image": "/assets/img/education/environment-1.webp",
             "is_featured": True,
-            "is_active": True
+            "is_active": True,
         },
         {
             "title": "Tourism & Cultural Heritage",
@@ -106,7 +107,7 @@ def seed_programs(db):
             """,
             "featured_image": "/assets/img/education/tourism-1.webp",
             "is_featured": False,
-            "is_active": True
+            "is_active": True,
         },
         {
             "title": "Life Skills & Personal Development",
@@ -126,8 +127,8 @@ def seed_programs(db):
             """,
             "featured_image": "/assets/img/education/lifeskills-1.webp",
             "is_featured": False,
-            "is_active": True
-        }
+            "is_active": True,
+        },
     ]
 
     for program_data in programs_data:
@@ -136,6 +137,7 @@ def seed_programs(db):
 
     db.commit()
     print(f"Seeded {len(programs_data)} programs")
+
 
 def seed_events(db):
     """Seed the database with sample events"""
@@ -154,7 +156,7 @@ def seed_events(db):
             "content": "Join us for our annual showcase of scientific innovation and discovery. Participants will present projects in science, technology, engineering, and mathematics.",
             "registration_deadline": base_date + timedelta(days=10),
             "is_featured": True,
-            "is_active": True
+            "is_active": True,
         },
         {
             "title": "Parent-Teacher Conference",
@@ -167,7 +169,7 @@ def seed_events(db):
             "content": "An important gathering to discuss student progress, challenges, and strategies for supporting youth development.",
             "registration_deadline": base_date + timedelta(days=18),
             "is_featured": False,
-            "is_active": True
+            "is_active": True,
         },
         {
             "title": "Annual Sports Tournament",
@@ -181,7 +183,7 @@ def seed_events(db):
             "content": "A celebration of athletic excellence featuring football, basketball, volleyball, and track & field events.",
             "registration_deadline": base_date + timedelta(days=25),
             "is_featured": True,
-            "is_active": True
+            "is_active": True,
         },
         {
             "title": "Graduation Ceremony 2025",
@@ -194,7 +196,7 @@ def seed_events(db):
             "content": "A momentous occasion honoring the hard work and dedication of our graduates as they embark on their next chapter.",
             "registration_deadline": base_date + timedelta(days=45),
             "is_featured": True,
-            "is_active": True
+            "is_active": True,
         },
         {
             "title": "Summer Leadership Camp",
@@ -208,7 +210,7 @@ def seed_events(db):
             "content": "A transformative week of leadership development, outdoor activities, and community service projects.",
             "registration_deadline": base_date + timedelta(days=60),
             "is_featured": True,
-            "is_active": True
+            "is_active": True,
         },
         {
             "title": "Agribusiness Workshop Series",
@@ -222,7 +224,7 @@ def seed_events(db):
             "content": "Learn practical skills in crop production, livestock management, and agricultural entrepreneurship.",
             "registration_deadline": base_date + timedelta(days=5),
             "is_featured": False,
-            "is_active": True
+            "is_active": True,
         },
         {
             "title": "Environmental Conservation Summit",
@@ -235,7 +237,7 @@ def seed_events(db):
             "content": "A platform for young environmental activists to share solutions and advocate for policy changes.",
             "registration_deadline": base_date + timedelta(days=35),
             "is_featured": False,
-            "is_active": True
+            "is_active": True,
         },
         {
             "title": "Youth Entrepreneurship Fair",
@@ -248,8 +250,8 @@ def seed_events(db):
             "content": "Connect with investors, mentors, and fellow entrepreneurs while showcasing your business ideas.",
             "registration_deadline": base_date + timedelta(days=50),
             "is_featured": False,
-            "is_active": True
-        }
+            "is_active": True,
+        },
     ]
 
     for event_data in events_data:
@@ -258,6 +260,7 @@ def seed_events(db):
 
     db.commit()
     print(f"Seeded {len(events_data)} events")
+
 
 def seed_news(db):
     """Seed the database with sample news articles"""
@@ -273,7 +276,7 @@ def seed_news(db):
             "publish_date": base_date - timedelta(days=5),
             "featured_image": "/assets/img/blog/blog-post-1.webp",
             "is_featured": True,
-            "is_active": True
+            "is_active": True,
         },
         {
             "title": "New Partnership with Agricultural Ministry",
@@ -284,7 +287,7 @@ def seed_news(db):
             "publish_date": base_date - timedelta(days=12),
             "featured_image": "/assets/img/blog/blog-post-2.webp",
             "is_featured": False,
-            "is_active": True
+            "is_active": True,
         },
         {
             "title": "Environmental Club Plants 10,000 Trees",
@@ -295,7 +298,7 @@ def seed_news(db):
             "publish_date": base_date - timedelta(days=20),
             "featured_image": "/assets/img/blog/blog-post-3.webp",
             "is_featured": False,
-            "is_active": True
+            "is_active": True,
         },
         {
             "title": "Youth Leadership Summit 2025 Announced",
@@ -306,8 +309,8 @@ def seed_news(db):
             "publish_date": base_date - timedelta(days=25),
             "featured_image": "/assets/img/blog/blog-post-4.webp",
             "is_featured": True,
-            "is_active": True
-        }
+            "is_active": True,
+        },
     ]
 
     for news_item in news_data:
@@ -316,6 +319,7 @@ def seed_news(db):
 
     db.commit()
     print(f"Seeded {len(news_data)} news articles")
+
 
 def main():
     """Main seeding function"""
@@ -342,7 +346,6 @@ def main():
     finally:
         db.close()
 
+
 if __name__ == "__main__":
     main()
-
-

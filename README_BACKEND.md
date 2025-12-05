@@ -24,7 +24,17 @@ This is the complete FastAPI server for the United Youth Developers website, pro
    python seed_data.py
    ```
 
-3. **Run the Server**:
+3. **Configure API Key Security**:
+
+   Create a `.env` file (or update the existing one) and define a key that will be required on every `POST`, `PUT`, and `DELETE` request:
+
+   ```bash
+   echo "UYD_API_KEY=super-secret-key" >> .env
+   ```
+
+   When calling protected endpoints, include the header `X-API-Key: super-secret-key`. If the header is missing or incorrect, the request will be rejected.
+
+4. **Run the Server**:
 
    ```bash
    # Easy startup
@@ -53,33 +63,33 @@ The website and API will be available at `http://localhost:8000`
 
 #### Programs
 
-- `GET /api/programs/` - List all programs
-- `GET /api/programs/featured/` - Get featured programs
+- `GET /api/programs` - List all programs
+- `GET /api/programs/featured` - Get featured programs
 - `GET /api/programs/{id}` - Get specific program
-- `POST /api/programs/` - Create new program
+- `POST /api/programs` - Create new program *(requires `X-API-Key` header)*
 - `PUT /api/programs/{id}` - Update program
 - `DELETE /api/programs/{id}` - Delete program
 
 #### Events
 
-- `GET /api/events/` - List all events
-- `GET /api/events/upcoming/` - Get upcoming events
+- `GET /api/events` - List all events
+- `GET /api/events/upcoming` - Get upcoming events
 - `GET /api/events/{id}` - Get specific event
-- `POST /api/events/` - Create new event
+- `POST /api/events` - Create new event *(requires `X-API-Key` header)*
 - `PUT /api/events/{id}` - Update event
 - `DELETE /api/events/{id}` - Delete event
 
 #### News
 
-- `GET /api/news/` - List all articles
-- `GET /api/news/latest/` - Get latest news
-- `GET /api/news/featured/` - Get featured articles
+- `GET /api/news` - List all articles
+- `GET /api/news/latest` - Get latest news
+- `GET /api/news/featured` - Get featured articles
 - `GET /api/news/{id}` - Get specific article
-- `POST /api/news/` - Create new article
+- `POST /api/news` - Create new article *(requires `X-API-Key` header)*
 
 #### Site Stats
 
-- `GET /api/core/stats/` - Get site statistics
+- `GET /api/core/stats` - Get site statistics
 
 ## API Documentation
 

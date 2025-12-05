@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from fastapi import UploadFile
 from pydantic import BaseModel
 
 
@@ -25,6 +26,12 @@ class ProgramResponse(ProgramBase):
 
     class Config:
         from_attributes = True
+
+
+class ProgramCreateWithImage(ProgramCreate):
+    """Program creation schema with image upload support."""
+
+    featured_image_file: UploadFile | None = None
 
 
 class EventBase(BaseModel):
@@ -53,6 +60,12 @@ class EventResponse(EventBase):
 
     class Config:
         from_attributes = True
+
+
+class EventCreateWithImage(EventCreate):
+    """Event creation schema with image upload support."""
+
+    featured_image_file: UploadFile | None = None
 
 
 class NewsArticleBase(BaseModel):

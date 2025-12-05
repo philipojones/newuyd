@@ -37,7 +37,9 @@ async def create_program(
     description: str,
     content: str,
     is_featured: bool = False,
-    category: Literal["Tech", "Arts", "Sports", "Others"] = "Others",
+    category: Literal[
+        "Leadership", "Agriculture", "Digital Skill", "Environment"
+    ] = "Others",
     featured_image_file: UploadFile | None = File(None),
     db: Session = Depends(get_db),
     _: None = Depends(verify_api_key),
@@ -106,11 +108,13 @@ async def update_program(
     program_id: int,
     title: str | None = None,
     description: str | None = None,
-    category: str | None = None,
+    category: Literal["Leadership", "Agriculture", "Digital Skill", "Environment"]
+    | None = None,
     content: str | None = None,
     is_featured: bool | None = None,
     featured_image_file: UploadFile | None = File(None),
     db: Session = Depends(get_db),
+    _: None = Depends(verify_api_key),
 ) -> ProgramResponse:
     """Update an existing program with optional image upload."""
     db_program = db.query(Program).filter(Program.id == program_id).first()
@@ -160,7 +164,7 @@ async def delete_program(
 async def create_event(
     title: str,
     description: str,
-    event_type: str,
+    event_type: Literal["Leadership", "Agriculture", "Digital Skill", "Environment"],
     start_date: datetime,
     location: str,
     end_date: datetime | None = None,
@@ -170,6 +174,7 @@ async def create_event(
     is_featured: bool = False,
     featured_image_file: UploadFile | None = File(None),
     db: Session = Depends(get_db),
+    _: None = Depends(verify_api_key),
 ) -> EventResponse:
     """Create a new event with optional image upload."""
     # Handle image upload if provided
@@ -204,7 +209,8 @@ async def create_event(
 async def get_events(
     skip: int = 0,
     limit: int = 100,
-    event_type: str | None = None,
+    event_type: Literal["Leadership", "Agriculture", "Digital Skill", "Environment"]
+    | None = None,
     featured: bool | None = None,
     upcoming: bool | None = None,
     db: Session = Depends(get_db),
@@ -257,6 +263,7 @@ async def update_event(
     is_featured: bool | None = None,
     featured_image_file: UploadFile | None = File(None),
     db: Session = Depends(get_db),
+    _: None = Depends(verify_api_key),
 ) -> EventResponse:
     """Update an existing event with optional image upload."""
     db_event = db.query(Event).filter(Event.id == event_id).first()

@@ -17,6 +17,7 @@ from src.app.schemas import (
     NewsArticleResponse,
     ProgramResponse,
 )
+from src.app.utils.api_security import verify_api_key
 from src.app.utils.image_upload import get_upload_directory, save_upload_file
 
 base_dir = Path(__file__).parent.parent
@@ -39,6 +40,7 @@ async def create_program(
     category: Literal["Tech", "Arts", "Sports", "Others"] = "Others",
     featured_image_file: UploadFile | None = File(None),
     db: Session = Depends(get_db),
+    _: None = Depends(verify_api_key),
 ) -> ProgramResponse:
     """Create a new program with optional image upload."""
     # Handle image upload if provided
@@ -83,7 +85,7 @@ async def get_programs(
     return programs
 
 
-@router.get("/api/programs/featured/", response_model=list[ProgramResponse])
+@router.get("/api/programs/featured", response_model=list[ProgramResponse])
 async def get_featured_programs(db: Session = Depends(get_db)):
     programs = db.query(Program).filter(Program.is_active, Program.is_featured).all()
     return programs
@@ -139,7 +141,11 @@ async def update_program(
 
 
 @router.delete("/api/programs/{program_id}")
-async def delete_program(program_id: int, db: Session = Depends(get_db)):
+async def delete_program(
+    program_id: int,
+    db: Session = Depends(get_db),
+    _: None = Depends(verify_api_key),
+):
     db_program = db.query(Program).filter(Program.id == program_id).first()
     if not db_program:
         raise HTTPException(status_code=404, detail="Program not found")
@@ -291,7 +297,11 @@ async def update_event(
 
 
 @router.delete("/api/events/{event_id}")
-async def delete_event(event_id: int, db: Session = Depends(get_db)):
+async def delete_event(
+    event_id: int,
+    db: Session = Depends(get_db),
+    _: None = Depends(verify_api_key),
+):
     db_event = db.query(Event).filter(Event.id == event_id).first()
     if not db_event:
         raise HTTPException(status_code=404, detail="Event not found")
@@ -302,10 +312,11 @@ async def delete_event(event_id: int, db: Session = Depends(get_db)):
 
 
 # News API endpoints
-@router.post("/api/news/", response_model=NewsArticleResponse)
+@router.post("/api/news", response_model=NewsArticleResponse)
 async def create_news_article(
     article: NewsArticleCreate,
     db: Session = Depends(get_db),
+    _: None = Depends(verify_api_key),
 ):
     db_article = NewsArticle(**article.dict())
     db.add(db_article)
@@ -314,7 +325,7 @@ async def create_news_article(
     return db_article
 
 
-@router.get("/api/news/", response_model=list[NewsArticleResponse])
+@router.get("/api/news", response_model=list[NewsArticleResponse])
 async def get_news(
     skip: int = 0,
     limit: int = 100,
@@ -335,7 +346,7 @@ async def get_news(
     return news
 
 
-@router.get("/api/news/latest/", response_model=list[NewsArticleResponse])
+@router.get("/api/news/latest", response_model=list[NewsArticleResponse])
 async def get_latest_news(db: Session = Depends(get_db)):
     news = (
         db.query(NewsArticle)
@@ -347,7 +358,7 @@ async def get_latest_news(db: Session = Depends(get_db)):
     return news
 
 
-@router.get("/api/news/featured/", response_model=list[NewsArticleResponse])
+@router.get("/api/news/featured", response_model=list[NewsArticleResponse])
 async def get_featured_news(db: Session = Depends(get_db)):
     news = (
         db.query(NewsArticle)
@@ -372,7 +383,7 @@ async def get_news_article(article_id: int, db: Session = Depends(get_db)):
 
 
 # Site stats endpoint
-@router.get("/api/core/stats/")
+@router.get("/api/core/stats")
 async def get_site_stats(db: Session = Depends(get_db)):
     programs_count = db.query(Program).filter(Program.is_active).count()
     events_count = db.query(Event).filter(Event.is_active).count()

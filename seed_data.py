@@ -1,13 +1,13 @@
-"""
-Seed script to populate UYD database with sample programs and events
-"""
+"""Seed script to populate UYD database with sample programs and events."""
 
 from datetime import datetime, timedelta
-from main import SessionLocal, Program, Event, NewsArticle
+
+from src.app.database.config import SessionLocal
+from src.app.database.tables import Event, NewsArticle, Program
 
 
 def seed_programs(db):
-    """Seed the database with sample programs"""
+    """Seed the database with sample programs."""
     programs_data = [
         {
             "title": "Youth Education & Skills Development",

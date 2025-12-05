@@ -13,16 +13,19 @@ This is the complete FastAPI server for the United Youth Developers website, pro
 ## Quick Start
 
 1. **Install Dependencies**:
+
    ```bash
    pip install -r requirements.txt
    ```
 
 2. **Seed the Database** (optional):
+
    ```bash
    python seed_data.py
    ```
 
 3. **Run the Server**:
+
    ```bash
    # Easy startup
    python run.py
@@ -36,6 +39,7 @@ The website and API will be available at `http://localhost:8000`
 ## Available Routes
 
 ### Website Pages
+
 - `GET /` - Home page
 - `GET /about` - About Us page
 - `GET /programs` - Programs page
@@ -48,6 +52,7 @@ The website and API will be available at `http://localhost:8000`
 ### API Endpoints
 
 #### Programs
+
 - `GET /api/programs/` - List all programs
 - `GET /api/programs/featured/` - Get featured programs
 - `GET /api/programs/{id}` - Get specific program
@@ -56,6 +61,7 @@ The website and API will be available at `http://localhost:8000`
 - `DELETE /api/programs/{id}` - Delete program
 
 #### Events
+
 - `GET /api/events/` - List all events
 - `GET /api/events/upcoming/` - Get upcoming events
 - `GET /api/events/{id}` - Get specific event
@@ -64,6 +70,7 @@ The website and API will be available at `http://localhost:8000`
 - `DELETE /api/events/{id}` - Delete event
 
 #### News
+
 - `GET /api/news/` - List all articles
 - `GET /api/news/latest/` - Get latest news
 - `GET /api/news/featured/` - Get featured articles
@@ -71,6 +78,7 @@ The website and API will be available at `http://localhost:8000`
 - `POST /api/news/` - Create new article
 
 #### Site Stats
+
 - `GET /api/core/stats/` - Get site statistics
 
 ## API Documentation
@@ -80,6 +88,7 @@ Visit `http://localhost:8000/docs` for interactive API documentation with Swagge
 ## Database Schema
 
 The application uses SQLite with the following main tables:
+
 - `programs`: Youth development programs
 - `events`: Events and activities
 - `news_articles`: News and blog articles
@@ -89,6 +98,7 @@ The application uses SQLite with the following main tables:
 To modify the database schema, update the SQLAlchemy models in `main.py` and recreate the database.
 
 For production deployment, consider:
+
 - Using PostgreSQL instead of SQLite
 - Adding authentication/authorization
 - Implementing proper logging

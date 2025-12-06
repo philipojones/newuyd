@@ -1,13 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import (
-    Boolean,
-    Column,
-    DateTime,
-    Integer,
-    String,
-    Text,
-)
+from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String, Text
 from sqlalchemy.ext.declarative import declarative_base
 
 from src.app.database.config import engine
@@ -72,6 +65,21 @@ class NewsArticle(Base):
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     is_featured = Column(Boolean, default=False)
     is_active = Column(Boolean, default=True)
+
+
+# Event registration
+class EventRegistration(Base):
+    """Event Registration."""
+
+    __tablename__ = "event_registrations"
+
+    id = Column(Integer, primary_key=True, index=True)
+    event_id = Column(Integer, ForeignKey("events.id"))
+    user_name = Column(String, index=True)
+    user_email = Column(String, index=True)
+    user_mobile_number = Column(String, index=True)
+    registration_date = Column(DateTime, default=datetime.utcnow)
+    is_confirmed = Column(Boolean, default=False)
 
 
 Base.metadata.create_all(bind=engine)

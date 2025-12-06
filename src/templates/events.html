@@ -1,220 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Events - United Youth Developers</title>
+    <meta
+      name="description"
+      content="Discover upcoming events and activities by United Youth Developers - workshops, seminars, training programs, and community events for Tanzanian youth"
+    />
+    <meta
+      name="keywords"
+      content="youth events, Tanzania events, workshops, seminars, training, community events, UYD events"
+    />
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Events - United Youth Developers</title>
-  <meta name="description" content="Discover upcoming events and activities by United Youth Developers - workshops, seminars, training programs, and community events for Tanzanian youth">
-  <meta name="keywords" content="youth events, Tanzania events, workshops, seminars, training, community events, UYD events">
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet" />
 
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
+    <!-- =======================================================
   * Template Name: College
   * Template URL: https://bootstrapmade.com/college-bootstrap-education-template/
   * Updated: Jun 19 2025 with Bootstrap v5.3.6
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-</head>
+  </head>
 
-<body class="events-page">
+  <body class="events-page">
+    <header id="header" class="header d-flex align-items-center sticky-top">
+      <div
+        class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-end"
+      >
+        <a href="index.html" class="logo d-flex align-items-center me-auto">
+          <!-- UYD Logo will be added here -->
+          <!-- <img src="assets/img/uyd-logo.png" alt="United Youth Developers"> -->
+          <h1 class="sitename">UYD</h1>
+          <span class="logo-text">United Youth Developers</span>
+        </a>
 
-  <header id="header" class="header d-flex align-items-center sticky-top">
-    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-end">
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li class="dropdown">
+              <a href="about.html"
+                ><span>About Us</span>
+                <i class="bi bi-chevron-down toggle-dropdown"></i
+              ></a>
+              <ul>
+                <li><a href="about.html">Our Story</a></li>
+                <li><a href="about.html#mission">Mission & Vision</a></li>
+                <li><a href="about.html#leadership">Leadership Team</a></li>
+                <li><a href="about.html#partners">Partners</a></li>
+              </ul>
+            </li>
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <!-- UYD Logo will be added here -->
-        <!-- <img src="assets/img/uyd-logo.png" alt="United Youth Developers"> -->
-        <h1 class="sitename">UYD</h1>
-        <span class="logo-text">United Youth Developers</span>
-      </a>
+            <li class="dropdown">
+              <a href="programs.html"
+                ><span>Programs</span>
+                <i class="bi bi-chevron-down toggle-dropdown"></i
+              ></a>
+              <ul>
+                <li><a href="programs.html#education">Education</a></li>
+                <li><a href="programs.html#agribusiness">Agribusiness</a></li>
+                <li><a href="programs.html#leadership">Leadership</a></li>
+                <li><a href="programs.html#environment">Environment</a></li>
+                <li><a href="programs.html#tourism">Tourism & Events</a></li>
+                <li><a href="programs.html#lifeskills">Life Skills</a></li>
+              </ul>
+            </li>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li class="dropdown"><a href="about.html"><span>About Us</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="about.html">Our Story</a></li>
-              <li><a href="about.html#mission">Mission & Vision</a></li>
-              <li><a href="about.html#leadership">Leadership Team</a></li>
-              <li><a href="about.html#partners">Partners</a></li>
-            </ul>
-          </li>
+            <li><a href="events.html" class="active">Events</a></li>
+            <!-- <li><a href="resources.html">Resources</a></li> -->
+            <li><a href="get-involved.html">Get Involved</a></li>
+            <li class="dropdown">
+              <a href="#"
+                ><span>Language</span>
+                <i class="bi bi-chevron-down toggle-dropdown"></i
+              ></a>
+              <ul>
+                <li><a href="#" onclick="switchLanguage('en')">English</a></li>
+                <li>
+                  <a href="#" onclick="switchLanguage('sw')">Kiswahili</a>
+                </li>
+              </ul>
+            </li>
 
-          <li class="dropdown"><a href="programs.html"><span>Programs</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="programs.html#education">Education</a></li>
-              <li><a href="programs.html#agribusiness">Agribusiness</a></li>
-              <li><a href="programs.html#leadership">Leadership</a></li>
-              <li><a href="programs.html#environment">Environment</a></li>
-              <li><a href="programs.html#tourism">Tourism & Events</a></li>
-              <li><a href="programs.html#lifeskills">Life Skills</a></li>
-            </ul>
-          </li>
-
-          <li><a href="events.html" class="active">Events</a></li>
-          <!-- <li><a href="resources.html">Resources</a></li> -->
-          <li><a href="get-involved.html">Get Involved</a></li>
-          <li class="dropdown"><a href="#"><span>Language</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#" onclick="switchLanguage('en')">English</a></li>
-              <li><a href="#" onclick="switchLanguage('sw')">Kiswahili</a></li>
-            </ul>
-          </li>
-
-         
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-
-    </div>
-  </header>
-
-  <main class="main">
-
-    <!-- Page Title -->
-    <div class="page-title light-background">
-      <div class="container d-lg-flex justify-content-between align-items-center">
-        <h1 class="mb-2 mb-lg-0">Events</h1>
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Events</li>
-          </ol>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
       </div>
-    </div><!-- End Page Title -->
+    </header>
 
-    <!-- Events Extended Section -->
-    <section id="events-extended" class="events-extended section">
+    <main class="main">
+      <!-- Page Title -->
+      <div class="page-title light-background">
+        <div
+          class="container d-lg-flex justify-content-between align-items-center"
+        >
+          <h1 class="mb-2 mb-lg-0">Events</h1>
+          <nav class="breadcrumbs">
+            <ol>
+              <li><a href="index.html">Home</a></li>
+              <li class="current">Events</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+      <!-- End Page Title -->
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+      <!-- Events Extended Section -->
+      <section id="events-extended" class="events-extended section">
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+          <div class="row">
+            <div class="col-lg-8">
+              <!-- Active Filters Indicator -->
+              {% if search or event_type %}
+              <div class="active-filters mb-4 p-3 bg-light rounded">
+                <div class="d-flex align-items-center flex-wrap gap-2">
+                  <strong class="me-2">Active Filters:</strong>
+                  {% if search %}
+                  <span class="badge bg-primary">
+                    Search: "{{ search }}"
+                    <a
+                      href="/events{% if event_type %}?event_type={{ event_type }}{% endif %}"
+                      class="text-white text-decoration-none ms-1"
+                      >×</a
+                    >
+                  </span>
+                  {% endif %} {% if event_type %}
+                  <span class="badge bg-primary">
+                    Type: {{ event_type|title }}
+                    <a
+                      href="/events{% if search %}?search={{ search }}{% endif %}"
+                      class="text-white text-decoration-none ms-1"
+                      >×</a
+                    >
+                  </span>
+                  {% endif %}
+                  <a
+                    href="/events"
+                    class="btn btn-sm btn-outline-secondary ms-auto"
+                    >Clear All</a
+                  >
+                </div>
+              </div>
+              {% endif %}
 
-        <div class="row">
-          <div class="col-lg-8">
-            <!-- Events List -->
-            <div id="events-list" class="events-list">
-              {% if events and events|length > 0 %}
-                {% for event in events %}
-                  <div class="event-item" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}">
-                    <div class="event-date">
-                      <span class="day">{{ event.start_day }}</span>
-                      <span class="month">{{ event.start_month }}</span>
+              <!-- Events List -->
+              <div id="events-list" class="events-list">
+                {% if events and events|length > 0 %} {% for event in events %}
+                <div
+                  class="event-item"
+                  data-aos="fade-up"
+                  data-aos-delay="{{ loop.index0 * 100 }}"
+                >
+                  <div class="event-date">
+                    <span class="day">{{ event.start_day }}</span>
+                    <span class="month">{{ event.start_month }}</span>
+                  </div>
+                  <div class="event-content">
+                    <div class="event-meta mb-2">
+                      {% if event.event_type %}
+                      <span class="badge bg-primary me-2"
+                        >{{ event.event_type }}</span
+                      >
+                      {% endif %} {% if event.is_featured %}
+                      <span class="badge bg-warning text-dark">Featured</span>
+                      {% endif %}
                     </div>
-                    <div class="event-content">
-                      <div class="event-meta mb-2">
-                        {% if event.event_type %}
-                          <span class="badge bg-primary me-2">{{ event.event_type }}</span>
-                        {% endif %}
-                        {% if event.is_featured %}
-                          <span class="badge bg-warning text-dark">Featured</span>
-                        {% endif %}
-                      </div>
-                      <h3 class="event-title">
-                        <a href="event-details.html?id={{ event.id }}">{{ event.title }}</a>
-                      </h3>
-                      <div class="event-meta mb-3">
-                        <span><i class="bi bi-clock"></i> {{ event.start_time }}</span>
-                        <span><i class="bi bi-geo-alt"></i> {{ event.location }}</span>
-                        {% if event.max_participants %}
-                          <span><i class="bi bi-people"></i> {{ event.max_participants }} Max</span>
-                        {% endif %}
-                      </div>
-                      <p class="event-description">
-                        {% if event.description|length > 200 %}
-                          {{ event.description[:200] }}...
-                        {% else %}
-                          {{ event.description }}
-                        {% endif %}
-                      </p>
-                      <div class="event-footer mt-3">
-                        <a href="event-details.html?id={{ event.id }}" class="btn btn-primary btn-sm">
-                          Learn More <i class="bi bi-arrow-right"></i>
-                        </a>
-                        {% if event.registration_deadline %}
-                          <small class="text-muted ms-3">
-                            <i class="bi bi-calendar-check"></i> Register by {{ event.registration_deadline }}
-                          </small>
-                        {% endif %}
-                      </div>
+                    <h3 class="event-title">
+                      <a href="event-details.html?id={{ event.id }}"
+                        >{{ event.title }}</a
+                      >
+                    </h3>
+                    <div class="event-meta mb-3">
+                      <span
+                        ><i class="bi bi-clock"></i> {{ event.start_time
+                        }}</span
+                      >
+                      <span
+                        ><i class="bi bi-geo-alt"></i> {{ event.location
+                        }}</span
+                      >
+                      {% if event.max_participants %}
+                      <span
+                        ><i class="bi bi-people"></i> {{ event.max_participants
+                        }} Max</span
+                      >
+                      {% endif %}
+                    </div>
+                    <p class="event-description">
+                      {% if event.description|length > 200 %} {{
+                      event.description[:200] }}... {% else %} {{
+                      event.description }} {% endif %}
+                    </p>
+                    <div class="event-footer mt-3">
+                      <a
+                        href="event-details.html?id={{ event.id }}"
+                        class="btn btn-primary btn-sm"
+                      >
+                        Learn More <i class="bi bi-arrow-right"></i>
+                      </a>
+                      {% if event.registration_deadline %}
+                      <small class="text-muted ms-3">
+                        <i class="bi bi-calendar-check"></i> Register by {{
+                        event.registration_deadline }}
+                      </small>
+                      {% endif %}
                     </div>
                   </div>
-                {% endfor %}
-              {% else %}
+                </div>
+                {% endfor %} {% else %}
                 <!-- No events message -->
                 <div id="no-events-message" class="text-center py-5">
                   <div class="no-events-icon">
                     <i class="bi bi-calendar-x display-1 text-muted"></i>
                   </div>
                   <h4 class="mt-3">No Upcoming Events</h4>
-                  <p class="text-muted">Check back soon for new events and announcements.</p>
+                  <p class="text-muted">
+                    Check back soon for new events and announcements.
+                  </p>
                 </div>
-              {% endif %}
-            </div><!-- End Events List -->
-          </div>
+                {% endif %}
+              </div>
+              <!-- End Events List -->
+            </div>
 
-          <div class="col-lg-4">
-            <!-- Sidebar -->
-            <div class="events-sidebar">
-              <!-- Search Form -->
-              <div class="sidebar-item search-form" data-aos="fade-up">
-                <h4>Search Events</h4>
-                <form action="">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search Events...">
-                    <button class="btn" type="submit"><i class="bi bi-search"></i></button>
-                  </div>
-                </form>
-              </div><!-- End Search Form -->
+            <div class="col-lg-4">
+              <!-- Sidebar -->
+              <div class="events-sidebar">
+                <!-- Search Form -->
+                <div class="sidebar-item search-form" data-aos="fade-up">
+                  <h4>Search Events</h4>
+                  <form action="/events" method="get">
+                    {% if event_type %}
+                    <input
+                      type="hidden"
+                      name="event_type"
+                      value="{{ event_type }}"
+                    />
+                    {% endif %}
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        name="search"
+                        class="form-control"
+                        placeholder="Search Events..."
+                        value="{{ search or '' }}"
+                      />
+                      <button class="btn" type="submit">
+                        <i class="bi bi-search"></i>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+                <!-- End Search Form -->
 
-              <!-- Categories -->
-              <div class="sidebar-item categories" data-aos="fade-up" data-aos-delay="100">
-                <h4>Event Categories</h4>
-                <ul class="list-unstyled">
-                  <li><a href="#">Academic <span>(12)</span></a></li>
-                  <li><a href="#">Sports <span>(7)</span></a></li>
-                  <li><a href="#">Arts &amp; Culture <span>(9)</span></a></li>
-                  <li><a href="#">Workshops <span>(5)</span></a></li>
-                  <li><a href="#">Seminars <span>(8)</span></a></li>
-                  <li><a href="#">Competitions <span>(6)</span></a></li>
-                </ul>
-              </div><!-- End Categories -->
+                <!-- Categories -->
+                <div
+                  class="sidebar-item categories"
+                  data-aos="fade-up"
+                  data-aos-delay="100"
+                >
+                  <h4>Event Categories</h4>
+                  <ul class="list-unstyled">
+                    <li>
+                      <a
+                        href="/events{% if search %}?search={{ search }}{% endif %}"
+                        class="{% if not event_type %}active{% endif %}"
+                      >
+                        All Events <span>({{ total_count or 0 }})</span>
+                      </a>
+                    </li>
+                    {% for type, count in event_type_counts %}
+                    <li>
+                      <a
+                        href="/events?event_type={{ type }}{% if search %}&search={{ search }}{% endif %}"
+                        class="{% if event_type == type %}active{% endif %}"
+                      >
+                        {{ type|title }} <span>({{ count }})</span>
+                      </a>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+                <!-- End Categories -->
 
-              <!-- Upcoming Events -->
-              <div class="sidebar-item upcoming-events" data-aos="fade-up" data-aos-delay="200">
-                <h4>Upcoming Featured Events</h4>
-                <div class="featured-event">
-                  <img src="assets/img/education/events-5.webp" alt="Event" class="img-fluid">
-                  <div class="featured-event-details">
-                    <h5>Summer Leadership Camp</h5>
-                    <span class="event-date"><i class="bi bi-calendar"></i> July 10-15, 2023</span>
-                    <a href="#" class="btn-sm btn-register">Register Now</a>
+                <!-- Upcoming Events -->
+                <div
+                  class="sidebar-item upcoming-events"
+                  data-aos="fade-up"
+                  data-aos-delay="200"
+                >
+                  <h4>Upcoming Featured Events</h4>
+                  <div class="featured-event">
+                    <img
+                      src="assets/img/education/events-5.webp"
+                      alt="Event"
+                      class="img-fluid"
+                    />
+                    <div class="featured-event-details">
+                      <h5>Summer Leadership Camp</h5>
+                      <span class="event-date"
+                        ><i class="bi bi-calendar"></i> July 10-15, 2023</span
+                      >
+                      <a href="#" class="btn-sm btn-register">Register Now</a>
+                    </div>
                   </div>
                 </div>
-              </div><!-- End Upcoming Events -->
+                <!-- End Upcoming Events -->
 
-              <!-- Event Calendar -->
-              <div class="sidebar-item event-calendar" data-aos="fade-up" data-aos-delay="300">
+                <!-- Event Calendar -->
+                <!-- <div class="sidebar-item event-calendar" data-aos="fade-up" data-aos-delay="300">
                 <h4>Event Calendar</h4>
                 <div class="calendar-widget">
                   <div class="calendar-header">
@@ -285,124 +410,136 @@
                     </tbody>
                   </table>
                 </div>
-              </div><!-- End Event Calendar -->
-            </div><!-- End Sidebar -->
-          </div>
-        </div>
-
-      </div>
-
-    </section><!-- /Events Extended Section -->
-
-  </main>
-
-  <footer id="footer" class="footer position-relative light-background">
-
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6 footer-about">
-          <a href="/" class="logo d-flex align-items-center">
-            <span class="sitename">UYD</span>
-          </a>
-          <div class="footer-contact pt-3">
-            <p>United Youth Developers</p>
-            <p>Dar es Salaam, Tanzania</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+255 123 456 789</span></p>
-            <p><strong>Email:</strong> <span>info@unitedyouthdevelopers.org</span></p>
-          </div>
-          <div class="social-links d-flex mt-4">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-          </div>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="programs.html">Programs</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Programs</h4>
-          <ul>
-            <li><a href="programs.html#education">Education</a></li>
-            <li><a href="programs.html#agribusiness">Agribusiness</a></li>
-            <li><a href="programs.html#leadership">Leadership</a></li>
-            <li><a href="programs.html#environment">Environment</a></li>
-            <li><a href="programs.html#lifeskills">Life Skills</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Get Involved</h4>
-          <ul>
-            <li><a href="get-involved.html">Volunteer</a></li>
-            <li><a href="get-involved.html">Partner With Us</a></li>
-            <li><a href="get-involved.html">Donate</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Newsletter</h4>
-          <p>Stay updated with our latest programs and events</p>
-          <form id="newsletterForm" class="newsletter-form">
-            <div class="newsletter-input">
-              <input type="email" id="newsletterEmail" placeholder="Your email" required>
-              <button type="submit">Subscribe</button>
+              </div> -->
+                <!-- End Event Calendar -->
+              </div>
+              <!-- End Sidebar -->
             </div>
-          </form>
+          </div>
         </div>
+      </section>
+      <!-- /Events Extended Section -->
+    </main>
 
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">Code of Conduct</a></li>
-            <li><a href="#">Financial Reports</a></li>
-            <li><a href="#">Transparency</a></li>
-          </ul>
+    <footer id="footer" class="footer position-relative light-background">
+      <div class="container footer-top">
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6 footer-about">
+            <a href="/" class="logo d-flex align-items-center">
+              <span class="sitename">UYD</span>
+            </a>
+            <div class="footer-contact pt-3">
+              <p>United Youth Developers</p>
+              <p>Dar es Salaam, Tanzania</p>
+              <p class="mt-3">
+                <strong>Phone:</strong> <span>+255 123 456 789</span>
+              </p>
+              <p>
+                <strong>Email:</strong>
+                <span>info@unitedyouthdevelopers.org</span>
+              </p>
+            </div>
+            <div class="social-links d-flex mt-4">
+              <a href=""><i class="bi bi-twitter-x"></i></a>
+              <a href=""><i class="bi bi-facebook"></i></a>
+              <a href=""><i class="bi bi-instagram"></i></a>
+              <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="programs.html">Programs</a></li>
+              <li><a href="events.html">Events</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Our Programs</h4>
+            <ul>
+              <li><a href="programs.html#education">Education</a></li>
+              <li><a href="programs.html#agribusiness">Agribusiness</a></li>
+              <li><a href="programs.html#leadership">Leadership</a></li>
+              <li><a href="programs.html#environment">Environment</a></li>
+              <li><a href="programs.html#lifeskills">Life Skills</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Get Involved</h4>
+            <ul>
+              <li><a href="get-involved.html">Volunteer</a></li>
+              <li><a href="get-involved.html">Partner With Us</a></li>
+              <li><a href="get-involved.html">Donate</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Newsletter</h4>
+            <p>Stay updated with our latest programs and events</p>
+            <form id="newsletterForm" class="newsletter-form">
+              <div class="newsletter-input">
+                <input
+                  type="email"
+                  id="newsletterEmail"
+                  placeholder="Your email"
+                  required
+                />
+                <button type="submit">Subscribe</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Code of Conduct</a></li>
+              <li><a href="#">Financial Reports</a></li>
+              <li><a href="#">Transparency</a></li>
+            </ul>
+          </div>
         </div>
-
       </div>
-    </div>
 
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">United Youth Developers</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        Empowering Tanzanian Youth Since 2015
+      <div class="container copyright text-center mt-4">
+        <p>
+          © <span>Copyright</span>
+          <strong class="px-1 sitename">United Youth Developers</strong>
+          <span>All Rights Reserved</span>
+        </p>
+        <div class="credits">Empowering Tanzanian Youth Since 2015</div>
       </div>
-    </div>
+    </footer>
 
-  </footer>
+    <!-- Scroll Top -->
+    <a
+      href="#"
+      id="scroll-top"
+      class="scroll-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Preloader -->
+    <div id="preloader"></div>
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
-
-</body>
-
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>

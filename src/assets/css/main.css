@@ -6642,6 +6642,11 @@ section,
   color: var(--accent-color);
 }
 
+.events-extended .events-sidebar .sidebar-item.categories ul li a.active {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
 .events-extended .events-sidebar .sidebar-item.upcoming-events .featured-event {
   position: relative;
   border-radius: 6px;

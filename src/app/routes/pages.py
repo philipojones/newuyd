@@ -43,16 +43,49 @@ async def programs(request: Request):
 async def events(
     request: Request,
     db_session: Session = Depends(get_db),
+    search: str | None = None,
+    event_type: str | None = None,
 ):
-    # events that are active and have not ended yet
-    events = (
+    # Base query - events that are active and have not ended yet
+    query = (
         db_session.query(Event)
         .filter(Event.is_active)
         .filter(Event.end_date >= datetime.now())
-        .offset(0)
-        .limit(7)
+    )
+
+    # Apply search filter (case-insensitive search in title and description)
+    if search:
+        search_term = f"%{search}%"
+        query = query.filter(
+            (Event.title.ilike(search_term)) | (Event.description.ilike(search_term))
+        )
+
+    # Apply event type filter
+    if event_type:
+        query = query.filter(Event.event_type == event_type)
+
+    # Get filtered events (limit to 17)
+    events = query.order_by(Event.start_date).offset(0).limit(17).all()
+
+    # Get event type counts for sidebar
+    from sqlalchemy import func
+
+    event_type_counts = (
+        db_session.query(Event.event_type, func.count(Event.id))
+        .filter(Event.is_active)
+        .filter(Event.end_date >= datetime.now())
+        .group_by(Event.event_type)
         .all()
     )
+
+    # Get total count
+    total_count = (
+        db_session.query(func.count(Event.id))
+        .filter(Event.is_active)
+        .filter(Event.end_date >= datetime.now())
+        .scalar()
+    )
+
     if events:
         events = [
             {
@@ -84,7 +117,14 @@ async def events(
 
     return templates.TemplateResponse(
         "events.html",
-        {"request": request, "events": events},
+        {
+            "request": request,
+            "events": events,
+            "event_type_counts": event_type_counts,
+            "total_count": total_count,
+            "search": search,
+            "event_type": event_type,
+        },
     )
 
 

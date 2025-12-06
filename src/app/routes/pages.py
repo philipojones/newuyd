@@ -5,6 +5,7 @@ from pathlib import Path
 
 from fastapi import APIRouter, Depends, Request
 from fastapi.templating import Jinja2Templates
+from sqlalchemy import func
 from sqlalchemy.orm import Session
 
 from src.app.database.config import get_db
@@ -57,7 +58,7 @@ async def events(
     if search:
         search_term = f"%{search}%"
         query = query.filter(
-            (Event.title.ilike(search_term)) | (Event.description.ilike(search_term))
+            (Event.title.ilike(search_term)) | (Event.description.ilike(search_term)),
         )
 
     # Apply event type filter
@@ -67,8 +68,7 @@ async def events(
     # Get filtered events (limit to 17)
     events = query.order_by(Event.start_date).offset(0).limit(17).all()
 
-    # Get event type counts for sidebar
-    from sqlalchemy import func
+
 
     event_type_counts = (
         db_session.query(Event.event_type, func.count(Event.id))
@@ -154,7 +154,8 @@ async def event_details(request: Request):
 
 @router.get("/news-details")
 @router.get("/news-details.html")
-async def news_details(request: Request):
+async def news_details(request: Request,id:int, db_session: Session = Depends(get_db)):
+    news = db_session.query(Event).filter(Event.id == id).first()
     return templates.TemplateResponse("news-details.html", {"request": request})
 
 

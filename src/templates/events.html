@@ -114,22 +114,62 @@
           <div class="col-lg-8">
             <!-- Events List -->
             <div id="events-list" class="events-list">
-              <!-- Events will be loaded dynamically from backend -->
-              <div id="events-loading" class="text-center py-5">
-                <div class="spinner-border text-primary" role="status">
-                  <span class="visually-hidden">Loading events...</span>
+              {% if events and events|length > 0 %}
+                {% for event in events %}
+                  <div class="event-item" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}">
+                    <div class="event-date">
+                      <span class="day">{{ event.start_day }}</span>
+                      <span class="month">{{ event.start_month }}</span>
+                    </div>
+                    <div class="event-content">
+                      <div class="event-meta mb-2">
+                        {% if event.event_type %}
+                          <span class="badge bg-primary me-2">{{ event.event_type }}</span>
+                        {% endif %}
+                        {% if event.is_featured %}
+                          <span class="badge bg-warning text-dark">Featured</span>
+                        {% endif %}
+                      </div>
+                      <h3 class="event-title">
+                        <a href="event-details.html?id={{ event.id }}">{{ event.title }}</a>
+                      </h3>
+                      <div class="event-meta mb-3">
+                        <span><i class="bi bi-clock"></i> {{ event.start_time }}</span>
+                        <span><i class="bi bi-geo-alt"></i> {{ event.location }}</span>
+                        {% if event.max_participants %}
+                          <span><i class="bi bi-people"></i> {{ event.max_participants }} Max</span>
+                        {% endif %}
+                      </div>
+                      <p class="event-description">
+                        {% if event.description|length > 200 %}
+                          {{ event.description[:200] }}...
+                        {% else %}
+                          {{ event.description }}
+                        {% endif %}
+                      </p>
+                      <div class="event-footer mt-3">
+                        <a href="event-details.html?id={{ event.id }}" class="btn btn-primary btn-sm">
+                          Learn More <i class="bi bi-arrow-right"></i>
+                        </a>
+                        {% if event.registration_deadline %}
+                          <small class="text-muted ms-3">
+                            <i class="bi bi-calendar-check"></i> Register by {{ event.registration_deadline }}
+                          </small>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              {% else %}
+                <!-- No events message -->
+                <div id="no-events-message" class="text-center py-5">
+                  <div class="no-events-icon">
+                    <i class="bi bi-calendar-x display-1 text-muted"></i>
+                  </div>
+                  <h4 class="mt-3">No Upcoming Events</h4>
+                  <p class="text-muted">Check back soon for new events and announcements.</p>
                 </div>
-                <p class="mt-3">Loading upcoming events...</p>
-              </div>
-
-              <!-- No events message (hidden by default) -->
-              <div id="no-events-message" class="text-center py-5 d-none">
-                <div class="no-events-icon">
-                  <i class="bi bi-calendar-x display-1 text-muted"></i>
-                </div>
-                <h4 class="mt-3">No Upcoming Events</h4>
-                <p class="text-muted">Check back soon for new events and announcements.</p>
-              </div>
+              {% endif %}
             </div><!-- End Events List -->
           </div>
 

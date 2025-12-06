@@ -1,9 +1,14 @@
 """HTML pages."""
 
+from datetime import datetime
 from pathlib import Path
 
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Depends, Request
 from fastapi.templating import Jinja2Templates
+from sqlalchemy.orm import Session
+
+from src.app.database.config import get_db
+from src.app.database.tables import Event
 
 base_dir = Path(__file__).parent.parent.parent
 
@@ -35,8 +40,52 @@ async def programs(request: Request):
 
 @router.get("/events")
 @router.get("/events.html")
-async def events(request: Request):
-    return templates.TemplateResponse("events.html", {"request": request})
+async def events(
+    request: Request,
+    db_session: Session = Depends(get_db),
+):
+    # events that are active and have not ended yet
+    events = (
+        db_session.query(Event)
+        .filter(Event.is_active)
+        .filter(Event.end_date >= datetime.now())
+        .offset(0)
+        .limit(7)
+        .all()
+    )
+    if events:
+        events = [
+            {
+                "id": event.id,
+                "title": event.title,
+                "description": event.description,
+                "start_date": event.start_date.strftime("%Y-%m-%d"),
+                "start_time": event.start_date.strftime("%I:%M %p"),
+                "start_day": event.start_date.strftime("%d"),
+                "start_month": event.start_date.strftime("%b").upper(),
+                "start_year": event.start_date.strftime("%Y"),
+                "end_date": event.end_date.strftime("%Y-%m-%d")
+                if event.end_date
+                else None,
+                "location": event.location,
+                "event_type": event.event_type,
+                "is_featured": event.is_featured,
+                "max_participants": event.max_participants,
+                "featured_image": event.featured_image
+                or "assets/img/education/events-3.webp",
+                "registration_deadline": event.registration_deadline.strftime(
+                    "%Y-%m-%d",
+                )
+                if event.registration_deadline
+                else None,
+            }
+            for event in events
+        ]
+
+    return templates.TemplateResponse(
+        "events.html",
+        {"request": request, "events": events},
+    )
 
 
 @router.get("/contact")

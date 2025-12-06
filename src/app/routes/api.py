@@ -8,10 +8,12 @@ from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import Session, sessionmaker
+from sqlalchemy import or_
 
 from src.app.database.config import get_db
-from src.app.database.tables import Event, NewsArticle, Program
+from src.app.database.tables import Event, EventRegistration, NewsArticle, Program
 from src.app.schemas import (
+    EventRegistrationSchema,
     EventResponse,
     NewsArticleCreate,
     NewsArticleResponse,
@@ -203,6 +205,53 @@ async def create_event(
     db.commit()
     db.refresh(db_event)
     return db_event
+
+
+@router.post("/api/events/register")
+async def register_for_event(
+    registration: EventRegistrationSchema,
+    db: Session = Depends(get_db),
+) -> dict:
+    """Register a user for an event."""
+    # Check if event exists
+    event = (
+        db.query(Event)
+        .filter(Event.id == registration.event_id, Event.is_active)
+        .first()
+    )
+    if not event:
+        raise HTTPException(status_code=404, detail="Event not found")
+
+    existing_registration = (
+        db.query(EventRegistration)
+        .filter(
+            EventRegistration.event_id == registration.event_id,
+            or_(
+                EventRegistration.user_email == registration.user_email,
+                EventRegistration.user_mobile_number == registration.user_mobile_number,
+            ),
+        )
+        .first()
+    )
+
+    if existing_registration:
+        raise HTTPException(
+            status_code=400, detail="User already registered for this event"
+        )
+
+    new_event = EventRegistration(
+        event_id=registration.event_id,
+        user_name=registration.user_name,
+        user_email=registration.user_email,
+        user_mobile_number=registration.user_mobile_number,
+    )
+    db.add(new_event)
+    db.commit()
+    db.refresh(new_event)
+
+    return {
+        "message": f"Successfully registered {registration.user_name} for event {event.title}"
+    }
 
 
 @router.get("/api/events", response_model=list[EventResponse])

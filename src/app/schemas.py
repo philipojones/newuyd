@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from fastapi import UploadFile
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 # Pydantic Models
@@ -91,3 +91,21 @@ class NewsArticleResponse(NewsArticleBase):
 
     class Config:
         from_attributes = True
+
+
+class EventRegistrationSchema(BaseModel):
+    """Event registration Schema."""
+
+    event_id: int = Field(gt=0)
+    user_name: str = Field(
+        min_length=3,
+        max_length=100,
+    )
+    user_email: str = Field(
+        pattern=r"^[^@]+@[^@]+\.[^@]+$",
+        description="Valid email address",
+    )
+    user_mobile_number: str = Field(
+        min_length=10,
+        max_length=15,
+    )

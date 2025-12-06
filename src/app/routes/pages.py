@@ -68,8 +68,6 @@ async def events(
     # Get filtered events (limit to 17)
     events = query.order_by(Event.start_date).offset(0).limit(17).all()
 
-
-
     event_type_counts = (
         db_session.query(Event.event_type, func.count(Event.id))
         .filter(Event.is_active)
@@ -148,14 +146,45 @@ async def news(request: Request):
 
 @router.get("/event-details")
 @router.get("/event-details.html")
-async def event_details(request: Request):
-    return templates.TemplateResponse("event-details.html", {"request": request})
+async def event_details(
+    request: Request, id: int, db_session: Session = Depends(get_db)
+):
+    event = (
+        db_session.query(Event)
+        .filter(Event.id == id)
+        .filter(Event.is_active)
+        .filter(Event.end_date >= datetime.now())
+        .first()
+    )
+    formatted = {
+        "id": event.id,
+        "title": event.title,
+        "description": event.description,
+        "start_date": event.start_date.strftime("%Y-%m-%d"),
+        "start_time": event.start_date.strftime("%I:%M %p"),
+        "start_day": event.start_date.strftime("%d"),
+        "start_month": event.start_date.strftime("%b").upper(),
+        "start_year": event.start_date.strftime("%Y"),
+        "end_date": event.end_date.strftime("%Y-%m-%d") if event.end_date else None,
+        "location": event.location,
+        "event_type": event.event_type,
+        "is_featured": event.is_featured,
+        "max_participants": event.max_participants,
+        "featured_image": event.featured_image or "assets/img/education/events-3.webp",
+        "registration_deadline": event.registration_deadline.strftime(
+            "%Y-%m-%d",
+        )
+        if event.registration_deadline
+        else None,
+    }
+    return templates.TemplateResponse(
+        "event-details.html", {"request": request, "event": formatted}
+    )
 
 
 @router.get("/news-details")
 @router.get("/news-details.html")
-async def news_details(request: Request,id:int, db_session: Session = Depends(get_db)):
-    news = db_session.query(Event).filter(Event.id == id).first()
+async def news_details(request: Request):
     return templates.TemplateResponse("news-details.html", {"request": request})
 
 
